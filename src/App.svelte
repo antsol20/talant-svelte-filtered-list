@@ -3,7 +3,8 @@
 	import VirtualList from './VirtualList.svelte';
 	import ListItem from './ListItem.svelte';
 
-	let searchTerm = "";
+	let titleSearchTerm = "";
+	let langSearchTerm = "";
 	let items = [];
 
 
@@ -12,11 +13,8 @@
 		items = await res.json();
 	});
 
-	  // let items = [{lang: 'en', title: 'abcd', link: 'link1', mtype: 'l'},
-	// {lang: 'en', title: 'zxyv', link: 'link2', mtype: 's'}]
-
-
-	$: filteredList = items.filter(item => item.title.indexOf(searchTerm) !== -1);
+	$: filteredList = items.filter(item => item.title.indexOf(titleSearchTerm) !== -1)
+	.filter(item => item.lang.indexOf(langSearchTerm) !== -1);
 	
   let start;
   let end;
@@ -25,8 +23,10 @@
 
 <h1>Talant IPTV</h1>
 
-Filter Title: <input bind:value={searchTerm} />
-{searchTerm}
+Filter Lang: <input bind:value={langSearchTerm} />
+{langSearchTerm}<br />
+Filter Title: <input bind:value={titleSearchTerm} />
+{titleSearchTerm}
 
 <div class='container'>
 	<VirtualList items={filteredList} bind:start bind:end let:item>
