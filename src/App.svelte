@@ -4,7 +4,7 @@
 	import ListItem from './ListItem.svelte';
 
 	let titleSearchTerm = "";
-	let langSearchTerm = "";
+	let cgroupSearchTerm = "";
 	let items = [];
 
 
@@ -14,7 +14,7 @@
 	});
 
 	$: filteredList = items.filter(item => item.title.indexOf(titleSearchTerm) !== -1)
-	.filter(item => item.lang.indexOf(langSearchTerm) !== -1);
+	.filter(item => item.cgroup.indexOf(cgroupSearchTerm) !== -1);
 	
   let start;
   let end;
@@ -23,8 +23,8 @@
 
 <h1>Talant IPTV</h1>
 
-Filter Lang: <input bind:value={langSearchTerm} />
-{langSearchTerm}<br />
+Filter Group: <input bind:value={cgroupSearchTerm} />
+{cgroupSearchTerm}<br />
 Filter Title: <input bind:value={titleSearchTerm} />
 {titleSearchTerm}
 

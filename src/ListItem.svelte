@@ -1,11 +1,11 @@
 <script>
-	export let lang;
+	export let cgroup;
 	export let title;
 	export let link;
-	export let mtype;
+
 </script>
 
 <div class='card'>
 
-	<div class="customAS">{lang} -- {title} -- {link} -- {mtype}</div>
+	<div class="customAS">{cgroup} -- {title} -- {link}</div>
 </div>
