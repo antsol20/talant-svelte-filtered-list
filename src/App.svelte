@@ -6,11 +6,17 @@
 	let titleSearchTerm = "";
 	let cgroupSearchTerm = "";
 	let items = [];
-
+	let groups = [];
+	let selected = "[UK] SPORTS";
 
 	onMount(async () => {
 		const res = await fetch("./data.json");
 		items = await res.json();
+
+		const res_groups = await fetch("./groups.txt");
+		let grouptext = await res_groups.text();
+		groups = grouptext.split('\n');
+		
 	});
 
 	$: filteredList = items.filter(item => item.title.indexOf(titleSearchTerm) !== -1)
@@ -22,6 +28,11 @@
 </script>
 
 <h1>Talant IPTV</h1>
+
+<select bind:value={selected}>
+	{#each groups as value}<option {value}>{value}</option>{/each}
+</select>
+<br />
 
 Filter Group: <input bind:value={cgroupSearchTerm} />
 {cgroupSearchTerm}<br />
