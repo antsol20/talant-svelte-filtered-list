@@ -7,7 +7,6 @@
 	let cgroupSearchTerm = "";
 	let items = [];
 	let groups = [];
-	let selected = "[UK] SPORTS";
 
 	onMount(async () => {
 		const res = await fetch("./data.json");
