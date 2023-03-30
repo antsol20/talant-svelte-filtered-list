@@ -29,7 +29,7 @@
 
 <h1>Talant IPTV</h1>
 
-<select bind:value={selected}>
+<select bind:value={cgroupSearchTerm}>
 	{#each groups as value}<option {value}>{value}</option>{/each}
 </select>
 <br />
